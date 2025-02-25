@@ -264,7 +264,7 @@ export def get-diff [
       print $'(ansi r)The PR title or body contains keywords to skip the review, bye...(ansi reset)'
       exit $ECODE.SUCCESS
     }
-    http get -H $DIFF_HEADER $'($GITHUB_API_BASE)/repos/($repo)/pulls/($pr_number)' | str trim
+    http get -H $DIFF_HEADER $'($GITHUB_API_BASE)/repos/($repo)/pulls/($pr_number)' | str trim # HERE
   } else if ($diff_from | is-not-empty) {
     if not (has-ref $diff_from) {
       print $'(ansi r)The specified git ref ($diff_from) does not exist, please check it again.(ansi reset)'
