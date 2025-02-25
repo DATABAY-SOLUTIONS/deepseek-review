@@ -243,6 +243,7 @@ export def get-diff [
 ] {
   let BASE_HEADER = [Authorization $'Bearer ($env.GH_TOKEN)' Accept application/vnd.github.v3+json]
   let DIFF_HEADER = [Authorization $'token ($env.GH_TOKEN)' Accept application/vnd.github.v3.diff]
+  print $DIFF_HEADER
   let local_repo = $env.DEFAULT_LOCAL_REPO? | default (pwd)
   if ($pr_number | is-empty) {
     if not ($local_repo | path exists) {
