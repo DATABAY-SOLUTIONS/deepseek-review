@@ -242,7 +242,7 @@ export def get-diff [
   --patch-cmd: string,  # The `git show` or `git diff` command to get the diff content
 ] {
   let BASE_HEADER = [Authorization $'Bearer ($env.GH_TOKEN)' Accept application/vnd.github.v3+json]
-  let DIFF_HEADER = [Authorization $'Bearer ($env.GH_TOKEN)' Accept application/vnd.github.v3.diff]
+  let DIFF_HEADER = [Authorization $'token ($env.GH_TOKEN)' Accept application/vnd.github.v3.diff]
   let local_repo = $env.DEFAULT_LOCAL_REPO? | default (pwd)
   if ($pr_number | is-empty) {
     if not ($local_repo | path exists) {
